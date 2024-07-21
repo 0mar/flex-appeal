@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Table, Autocomplete, MenuItem, Select, TextField, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 
-function StationBox({ value, onChange, options }) {
+function StationBox({ value, onChange, options = [] }) {
   return (
     <Autocomplete
       disablePortal
