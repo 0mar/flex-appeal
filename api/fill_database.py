@@ -1,7 +1,6 @@
-from db.database import Database, Station
-from common.settings import Settings
+from api.db.database import Database, Station
+from api.common.settings import Settings
 import requests
-import json
 
 
 def fetch_stations(settings: Settings) -> list[dict]:
