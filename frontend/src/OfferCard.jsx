@@ -12,7 +12,7 @@ function OfferCard({ offer }) {
             <Card sx={{
                 maxWidth: 275,
                 borderColor: offer.is_best ? 'success.main' : 'border.paper',
-                borderWidth: 2,
+                borderWidth: 5,
                 borderStyle: 'solid',
             }}
                 variant="outlined"
