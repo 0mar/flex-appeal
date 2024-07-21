@@ -27,11 +27,6 @@ def get_db():
         pass
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello world"}
-
-
 @app.get("/get_stations/")
 async def get_stations(db: Database = Depends(get_db)) -> dict[str, list]:
     with db.session_factory() as session:

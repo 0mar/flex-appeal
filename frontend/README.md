@@ -1,8 +1,24 @@
-# React + Vite
+# FlexAppeal frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Installation
 
-Currently, two official plugins are available:
+Install npm if you don't have it already, then
+```bash
+cd frontend
+npm install
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run
+Ensure you run the API at some address, default is `localhost:8000`. Store this in an environment variable:
+```bash
+VITE_API_URL=localhost:8000`
+```
+
+then run 
+```bash
+npm run vite
+```
+
+and go to `localhost:5137`.
+
+

@@ -11,18 +11,15 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=postgres
 
-  backend:
+  api:
     image: sub-picker-api
     restart: always
     depends_on:
       - db 
     env_file: .env
     environment:
-    - POSTGRES_SERVER=db
-    - POSTGRES_PASSWORD=password
-    - POSTGRES_USER=postgres
-    - POSTGRES_DB=postgres
-    # - BACKEND_CORS_ORIGINS=${}
+    - DB_URI=postgresql://postgres:password@db/postgres
+    - BACKEND_CORS_ORIGINS=["http://frontend"]
 
     build:
       context: ./api
@@ -34,6 +31,9 @@ services:
       - "8000:80"
     build:
       context: ./frontend
+      args:
+        - VITE_API_URL=http://api
+        # - NODE_ENV=production
 
 volumes:
   db-data:

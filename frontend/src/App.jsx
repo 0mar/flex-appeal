@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import Box from '@mui/material/Box';
 
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -31,8 +32,9 @@ function App() {
   const [stations, setStations] = useState([]);
   const [offers, setOffers] = useState([]);
   const [prices, setPrices] = useState({});
+  const api_url = import.meta.env.VITE_API_URL
   useEffect(() => {
-    axios.get('http://localhost:8000/get_stations')
+    axios.get(`${api_url}/get_stations`)
       .then(response => {
         setStations(response.data.stations);
       })
@@ -75,7 +77,7 @@ function App() {
   const submitTrips = () => {
     if (validateTrips()) {
       const payload = { trips: trips, schedule: schedule };
-      axios.post('http://localhost:8000/get_prices', payload)
+      axios.post(`${api_url}/get_prices`, payload)
         .then(response => {
           setOffers(response.data)
           const offeredPrices = response.data[0]["per_trip_prices"];
