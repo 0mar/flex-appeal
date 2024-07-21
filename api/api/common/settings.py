@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     )
     price_url: str = "https://gateway.apiportal.ns.nl/public-prijsinformatie/prices"
     db_uri: str | None
+    backend_cors_origins: list[str] = ["http://localhost:5173"]
 
     def headers(self, key: str) -> dict:
         return {"Ocp-Apim-Subscription-Key": key}
