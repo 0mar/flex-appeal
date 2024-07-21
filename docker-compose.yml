@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    volumes: 
+      - db-data:/var/lib/postgresql/data/pgdata
+    env_file: .env
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+
+  backend:
+    image: sub-picker-api
+    restart: always
+    depends_on:
+      - db 
+    env_file: .env
+    environment:
+    - POSTGRES_SERVER=db
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_USER=postgres
+    - POSTGRES_DB=postgres
+    # - BACKEND_CORS_ORIGINS=${}
+
+    build:
+      context: ./api
+
+  frontend:
+    image: sub-picker-frontend
+    restart: always
+    ports:
+      - "8000:80"
+    build:
+      context: ./frontend
+
+volumes:
+  db-data:
