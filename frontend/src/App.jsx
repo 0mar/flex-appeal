@@ -8,7 +8,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import AddIcon from '@mui/icons-material/Add';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import Box from '@mui/material/Box';
-
+import api from './api';
 
 const theme = createTheme({
   palette: {
@@ -34,13 +34,16 @@ function App() {
   const [prices, setPrices] = useState({});
   const api_url = import.meta.env.VITE_API_URL
   useEffect(() => {
-    axios.get(`${api_url}/get_stations`)
-      .then(response => {
+    const fetchStations = async () => {
+      try {
+        const response = await api.get('/get_stations/');
         setStations(response.data.stations);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error fetching stations:', error);
-      });
+      }
+    };
+  
+    fetchStations();
   }, []);
 
   const handleChange = (id, field, value) => {
@@ -74,19 +77,20 @@ function App() {
     return true;
   };
 
-  const submitTrips = () => {
+  const submitTrips = async () => {
     if (validateTrips()) {
-      const payload = { trips: trips, schedule: schedule };
-      axios.post(`${api_url}/get_prices`, payload)
-        .then(response => {
-          setOffers(response.data)
-          const offeredPrices = response.data[0]["per_trip_prices"];
-          setPrices(offeredPrices);
-          console.log('Data sent successfully:', response.data);
-        })
-        .catch(error => {
-          console.error('Error sending data:', error);
-        });
+      try {
+        const response = await api.post('/get_prices/', payload);
+        console.log(payload, "cot")
+        setOffers(response.data);
+        const offeredPrices = response.data[0]["per_trip_prices"];
+        setPrices(offeredPrices);
+        console.log('Data sent successfully:', response.data);
+      } catch (error) {
+        console.error('Error sending data:', error);
+        // Optionally, you could set an error state here
+        // setError('Failed to get prices');
+      }
     } else {
       alert('Please complete all fields in each trip.');
     }

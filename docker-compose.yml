@@ -12,27 +12,29 @@ services:
       - POSTGRES_DB=postgres
 
   api:
-    image: sub-picker-api
+    image: flexappeal-api
     restart: always
     depends_on:
       - db 
     env_file: .env
     environment:
     - DB_URI=postgresql://postgres:password@db/postgres
-    - BACKEND_CORS_ORIGINS=["http://frontend"]
+    - BACKEND_CORS_ORIGINS=["http://localhost", "http://frontend"]
+    expose:
+      - 80
 
     build:
       context: ./api
 
   frontend:
-    image: sub-picker-frontend
+    image: flexappeal-frontend
     restart: always
     ports:
-      - "8000:80"
+      - "80:80"
     build:
       context: ./frontend
       args:
-        - VITE_API_URL=http://api
+        - VITE_API_URL=/api
         # - NODE_ENV=production
 
 volumes:
