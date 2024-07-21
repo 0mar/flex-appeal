@@ -80,6 +80,7 @@ function App() {
   const submitTrips = async () => {
     if (validateTrips()) {
       try {
+        const payload = { trips: trips, schedule: schedule };
         const response = await api.post('/get_prices/', payload);
         console.log(payload, "cot")
         setOffers(response.data);
