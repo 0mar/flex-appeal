@@ -1,5 +1,5 @@
-from common.definitions import DiscountType, Moment
-from common.models import Trip, Tariff
+from api.common.definitions import DiscountType, Moment
+from api.common.models import Trip, Tariff
 
 
 class BaseSubscriptor:

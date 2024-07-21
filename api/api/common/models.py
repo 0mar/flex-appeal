@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 import datetime as dtime
-from common.definitions import Moment, DiscountType, ProductType, ClassType
+from api.common.definitions import Moment, DiscountType, ProductType, ClassType
 
 
 class Tariff(BaseModel):

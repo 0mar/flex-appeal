@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "API for subscription picker"
 authors = ["0mar"]
 readme = "README.md"
+packages = [
+    {include = "api"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"

@@ -1,9 +1,9 @@
 from datetime import datetime
 from sqlalchemy import select
-from db.database import Database, Station
-from common.models import Trip, Tariff
-from common.definitions import Moment
-from common.settings import Settings
+from api.db.database import Database, Station
+from api.common.models import Trip, Tariff
+from api.common.definitions import Moment
+from api.common.settings import Settings
 import requests
 import logging
 

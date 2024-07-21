@@ -1,11 +1,11 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import select
-from common.models import Schedule, SubscriptionOffer
-from common.settings import Settings
-from db.database import Database, Station
-from planner.subscriptions import all_subs
-from planner.trip import fetch_tariffs
+from api.common.models import Schedule, SubscriptionOffer
+from api.common.settings import Settings
+from api.db.database import Database, Station
+from api.planner.subscriptions import all_subs
+from api.planner.trip import fetch_tariffs
 
 app = FastAPI()
 settings = Settings()
