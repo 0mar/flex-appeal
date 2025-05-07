@@ -1,23 +1,14 @@
-[tool.poetry]
-name = "api-sub-picker"
+[project]
+name = "api"
 version = "0.1.0"
-description = "API for subscription picker"
-authors = ["0mar"]
+description = "Add your description here"
 readme = "README.md"
-packages = [
-    {include = "api"}
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.12",
+    "psycopg2>=2.9.10",
+    "pydantic>=2.11.4",
+    "pydantic-settings>=2.9.1",
+    "requests>=2.32.3",
+    "sqlalchemy>=2.0.40",
 ]
-
-[tool.poetry.dependencies]
-python = "^3.11"
-fastapi = "^0.111.1"
-SQLAlchemy = "^2.0.31"
-pydantic-settings = "^2.3.4"
-pydantic = "^2.8.2"
-requests = "^2.32.3"
-psycopg2 = "^2.9.9"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

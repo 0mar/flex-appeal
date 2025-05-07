@@ -1,15 +1,17 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11
-
+FROM python:3.13-slim
 ENV APP_PATH="/app"
-ENV PYTHONPATH=${APP_PATH}
+RUN apt-get update \
+    && apt-get -y install libpq-dev gcc 
 
-WORKDIR ${APP_PATH}
+# Install uv.
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python && \
-    cd /usr/local/bin && \
-    ln -s /opt/poetry/bin/poetry && \
-    poetry config virtualenvs.create false
-
-COPY ./pyproject.toml ./poetry.lock* ${APP_PATH}
-RUN poetry install --no-root --only main
+# Copy the application into the container.
 COPY . ${APP_PATH}
+
+# Install the application dependencies.
+WORKDIR ${APP_PATH}
+RUN uv sync --frozen --no-cache
+
+# Run the application.
+CMD ["/app/.venv/bin/fastapi", "run", "app/main.py", "--port", "80", "--host", "0.0.0.0"]
