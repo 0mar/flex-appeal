@@ -9,20 +9,19 @@ class Moment(Flag):
 
 
 class ClassType(StrEnum):
-    SECOND = auto()
-    FIRST = auto()
+    SECOND = "SECOND_CLASS"
+    FIRST = "FIRST_CLASS"
 
 
 class DiscountType(StrEnum):
-    NONE = auto()
-    TWENTY_PERCENT = auto()
-    FORTY_PERCENT = auto()
-    FREE = auto()  # not present in NS API
+    NONE = "NO_DISCOUNT"
+    TWENTY_PERCENT = "DISCOUNT_20_PERCENT"
+    FORTY_PERCENT = "DISCOUNT_40_PERCENT"
+    FREE = "FREE"  # not present in NS API
 
 
 class ProductType(StrEnum):
-    SINGLE_FARE = auto()
-    RETURN_FARE = auto()
-    TRAJECTVRIJ_NSBUSINESSKAART = auto()
-    TRAJECTVRIJ_MAAND = auto()
-    TRAJECTVRIJ_JAAR = auto()
+    SINGLE_FARE = "OVCHIPKAART_ENKELE_REIS"
+    RETURN_FARE = "OVCHIPKAART_RETOUR"
+    TRAJECTVRIJ_JAAR = "TRAJECT_VRIJ_JAAR"
+    BUSINESSCARD_TRAJECTVRIJ_JAAR = "BUSINESS_CARD_TRAJECT_VRIJ_JAAR"

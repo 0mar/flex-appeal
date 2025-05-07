@@ -8,7 +8,7 @@ Make sure you have a PostgreSQL database available. Either installed locally or 
 
 ### Environment variables
 You need an API key for the NS API, as well as for the Travel API. List them as 
-`APP_API_KEY` and `TRAV_API_KEY`
+`APP_API_KEY`
 
 ```python
 python fill_database.py # (only once)

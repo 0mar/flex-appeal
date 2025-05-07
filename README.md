@@ -17,7 +17,6 @@ cd flex-appeal
 3. Store the keys in a `.env` file.
 ```bash
 APP_API_KEY=<app-registraion-key>
-TRAV_API_KEY=<travel-api-key>
 ```
 
 4. Build the frontend and backend images.

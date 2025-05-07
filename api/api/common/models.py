@@ -12,10 +12,10 @@ class Tariff(BaseModel):
     @classmethod
     def from_api_payload(cls, ns_dict: dict):
         return Tariff(
-            class_type=ns_dict["classType"].lower(),
-            discount_type=ns_dict["discountType"].lower(),
-            product_type=ns_dict["productType"].lower(),
-            price=ns_dict["price"] / 100,
+            class_type=ns_dict["travelClass"],
+            discount_type=ns_dict["discountType"],
+            product_type=ns_dict["product"],
+            price=ns_dict["priceInCents"] / 100,
         )
 
 
